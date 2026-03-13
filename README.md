@@ -24,6 +24,7 @@ O modulo implementa um sistema completo de enquetes onde:
 ```bash
 lando start
 lando composer install
+lando db-import database/simple_vote_seed.sql.gz
 lando drush en simple_vote basic_auth -y
 lando drush cr
 ```
