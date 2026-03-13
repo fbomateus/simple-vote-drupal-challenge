@@ -1,0 +1,12 @@
+name: Simple Vote
+type: module
+package: Custom
+description: 'Sistema de votação com entidade customizada, formulários e API REST.'
+version: 1.0.0
+core_version_requirement: ^11
+
+# Dependências do core necessárias para funcionamento completo.
+dependencies:
+  - drupal:file
+  - drupal:image
+  - drupal:user

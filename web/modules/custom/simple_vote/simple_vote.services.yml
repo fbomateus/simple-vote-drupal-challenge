@@ -1,0 +1,17 @@
+# Serviços do módulo Simple Vote.
+
+services:
+
+  # Serviço central de gerenciamento de votações.
+  # Concentra lógica de negócio: carregamento de perguntas,
+  # registro de votos, cálculo de resultados e serialização.
+  simple_vote.manager:
+    class: Drupal\simple_vote\Service\SimpleVoteManager
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@logger.factory'
+      - '@datetime.time'
+      - '@file_url_generator'

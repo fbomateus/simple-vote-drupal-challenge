@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Simple Vote API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection para testar a API customizada do módulo simple_vote."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://simple-vote.lndo.site"
+    },
+    {
+      "key": "identifier",
+      "value": "simple_vote_question_1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Listar perguntas",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/simple-vote/questions"
+      }
+    },
+    {
+      "name": "Detalhar pergunta",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/simple-vote/questions/{{identifier}}"
+      }
+    },
+    {
+      "name": "Registrar voto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"option_id\": \"1\"\n}"
+        },
+        "url": "{{baseUrl}}/api/simple-vote/questions/{{identifier}}/vote"
+      }
+    },
+    {
+      "name": "Resultados",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/simple-vote/questions/{{identifier}}/results"
+      }
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "admin",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "admin",
+        "type": "string"
+      }
+    ]
+  }
+}

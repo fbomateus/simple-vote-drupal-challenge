@@ -1,0 +1,28 @@
+# Permissões do módulo Simple Vote.
+#
+# Hierarquia sugerida:
+# - Administradores: 'administer simple vote questions'
+# - Usuários autenticados: 'access simple vote', 'vote on simple vote questions'
+# - Visualizadores: 'view simple vote results'
+# - Integrações: 'access simple vote api'
+
+administer simple vote questions:
+  title: 'Administrar perguntas de votação'
+  description: 'Criar, editar, excluir e configurar perguntas de votação.'
+  restrict access: true
+
+access simple vote:
+  title: 'Acessar páginas de votação'
+  description: 'Visualizar a listagem pública e as páginas de votação.'
+
+vote on simple vote questions:
+  title: 'Votar em perguntas'
+  description: 'Registrar votos nas perguntas disponíveis.'
+
+view simple vote results:
+  title: 'Visualizar resultados'
+  description: 'Ver os resultados das votações no site e na API.'
+
+access simple vote api:
+  title: 'Acessar API REST'
+  description: 'Consumir os endpoints da API do módulo via Basic Auth.'

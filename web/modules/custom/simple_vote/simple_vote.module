@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations do módulo Simple Vote.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Url;
+use Drupal\simple_vote\Entity\VoteQuestion;
+
+/**
+ * Implements hook_entity_operation().
+ *
+ * Adiciona link "Abrir votação" nas operações da entidade,
+ * permitindo acesso rápido à página pública de votação.
+ */
+function simple_vote_entity_operation($entity): array {
+  $operations = [];
+
+  if ($entity instanceof VoteQuestion) {
+    $operations['view_frontend'] = [
+      'title' => t('Abrir votação'),
+      'weight' => 25,
+      'url' => Url::fromRoute('simple_vote.user_question', [
+        'vote_question' => $entity->id(),
+      ]),
+    ];
+  }
+
+  return $operations;
+}

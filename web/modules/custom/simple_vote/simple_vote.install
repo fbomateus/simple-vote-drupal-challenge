@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Hooks de instalação e definição de schema do módulo Simple Vote.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_schema().
+ *
+ * Define a tabela de respostas (votos) dos usuários.
+ * Cada registro representa um voto único de um usuário em uma pergunta.
+ */
+function simple_vote_schema(): array {
+  $schema['simple_vote_response'] = [
+    'description' => 'Armazena os votos dos usuários nas perguntas de votação.',
+    'fields' => [
+      'id' => [
+        'description' => 'Identificador único do registro de voto.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'question_id' => [
+        'description' => 'Referência à pergunta de votação (vote_question.id).',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'user_id' => [
+        'description' => 'Referência ao usuário que votou (users_field_data.uid).',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'option_id' => [
+        'description' => 'Índice da opção escolhida (posição no array JSON).',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Timestamp Unix do momento do voto.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'idx_question' => ['question_id'],
+      'idx_user' => ['user_id'],
+      'idx_option' => ['option_id'],
+    ],
+    'unique keys' => [
+      // Garante que cada usuário vote apenas uma vez por pergunta.
+      'uk_question_user' => ['question_id', 'user_id'],
+    ],
+  ];
+
+  return $schema;
+}

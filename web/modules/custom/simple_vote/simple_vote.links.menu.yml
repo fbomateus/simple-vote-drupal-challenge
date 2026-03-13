@@ -1,0 +1,24 @@
+# Links de menu do módulo Simple Vote.
+
+# Link administrativo na seção de conteúdo.
+simple_vote.admin_collection:
+  title: 'Simple Vote'
+  description: 'Gerenciar perguntas de votação.'
+  route_name: entity.vote_question.collection
+  parent: system.admin_content
+  weight: 30
+
+# Link de configurações na seção de configuração de conteúdo.
+simple_vote.admin_settings:
+  title: 'Simple Vote'
+  description: 'Configurações globais do sistema de votação.'
+  route_name: simple_vote.settings
+  parent: system.admin_config_content
+  weight: 30
+
+# Link público no menu principal.
+simple_vote.public_questions:
+  title: 'Votações'
+  description: 'Lista de perguntas disponíveis para votação.'
+  route_name: simple_vote.user_questions
+  menu_name: main

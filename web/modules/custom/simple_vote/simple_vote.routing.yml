@@ -1,0 +1,91 @@
+# Rotas do módulo Simple Vote.
+#
+# Organização:
+# - Rotas administrativas (configurações)
+# - Rotas públicas (frontend de votação)
+# - Rotas da API REST
+
+# =============================================================================
+# ROTAS ADMINISTRATIVAS
+# =============================================================================
+
+simple_vote.settings:
+  path: '/admin/config/simple-vote/settings'
+  defaults:
+    _form: '\Drupal\simple_vote\Form\SimpleVoteSettingsForm'
+    _title: 'Configurações do Simple Vote'
+  requirements:
+    _permission: 'administer simple vote questions'
+
+# =============================================================================
+# ROTAS PÚBLICAS (FRONTEND)
+# =============================================================================
+
+simple_vote.user_questions:
+  path: '/simple-vote/questions'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\UserVoteController::listQuestions'
+    _title: 'Perguntas disponíveis'
+  requirements:
+    _permission: 'access simple vote'
+
+simple_vote.user_question:
+  path: '/simple-vote/questions/{vote_question}'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\UserVoteController::viewQuestion'
+    _title_callback: '\Drupal\simple_vote\Controller\UserVoteController::questionTitle'
+  requirements:
+    _entity_access: 'vote_question.view'
+    _permission: 'access simple vote'
+  options:
+    parameters:
+      vote_question:
+        type: entity:vote_question
+
+# =============================================================================
+# ROTAS DA API REST
+# =============================================================================
+
+simple_vote.api.questions:
+  path: '/api/simple-vote/questions'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\SimpleVoteApiController::listQuestions'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _permission: 'access simple vote api'
+  options:
+    _auth: ['basic_auth']
+
+simple_vote.api.question:
+  path: '/api/simple-vote/questions/{identifier}'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\SimpleVoteApiController::getQuestion'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _permission: 'access simple vote api'
+  options:
+    _auth: ['basic_auth']
+
+simple_vote.api.vote:
+  path: '/api/simple-vote/questions/{identifier}/vote'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\SimpleVoteApiController::submitVote'
+    _format: 'json'
+  methods: [POST]
+  requirements:
+    _permission: 'access simple vote api'
+  options:
+    _auth: ['basic_auth']
+
+simple_vote.api.results:
+  path: '/api/simple-vote/questions/{identifier}/results'
+  defaults:
+    _controller: '\Drupal\simple_vote\Controller\SimpleVoteApiController::getResults'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _permission: 'access simple vote api'
+  options:
+    _auth: ['basic_auth']

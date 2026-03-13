@@ -1,0 +1,7 @@
+simple_vote.settings:
+  type: config_object
+  label: 'Configurações do Simple Vote'
+  mapping:
+    global_voting_enabled:
+      type: boolean
+      label: 'Votação habilitada globalmente'
