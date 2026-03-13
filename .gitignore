@@ -1,0 +1,24 @@
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependências PHP
+/vendor/
+
+# Drupal - arquivos gerados
+/web/sites/*/files/*
+!/web/sites/*/files/.htaccess
+!/web/sites/*/files/simple-vote/
+!/web/sites/*/files/simple-vote/**
+
+/web/sites/*/private/
+/web/sites/*/translations/
+
+# Arquivos gerados comuns
+/web/sites/*/files/css/
+/web/sites/*/files/js/
+/web/sites/*/files/php/
+/web/sites/*/files/styles/
+/web/sites/*/files/config_*/

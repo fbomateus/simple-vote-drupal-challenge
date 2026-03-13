@@ -1,0 +1,28 @@
+name: simple-vote
+recipe: drupal11
+config:
+  php: "8.4"
+  via: nginx
+  webroot: web
+  database: mysql:8.0
+services:
+  appserver:
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=simple-vote"
+        DRUSH_OPTIONS_URI: "http://simple-vote.lndo.site"
+  database:
+    portforward: true
+tooling:
+  phpunit:
+    service: appserver
+    cmd: vendor/bin/phpunit -c web/core
+  phpcs:
+    service: appserver
+    cmd: vendor/bin/phpcs
+  drush:
+    service: appserver
+    cmd: vendor/bin/drush
+  composer:
+    service: appserver
+    cmd: composer
