@@ -28,6 +28,24 @@ lando drush en simple_vote basic_auth -y
 lando drush cr
 ```
 
+## Usuarios de Teste
+
+Os seguintes usuarios foram criados para teste da aplicacao e autenticacao na API:
+
+| Usuario  | Senha  | Perfil        |
+| -------- | ------ | ------------- |
+| admin    | admin | Administrador |
+| maria    | 123456 | Usuario comum |
+| joao     | 123456 | Usuario comum |
+| ana      | 123456 | Usuario comum |
+| jose     | 123456 | Usuario comum |
+| paulo    | 123456 | Usuario comum |
+| lucas    | 123456 | Usuario comum |
+| carlos   | 123456 | Usuario comum |
+| marcos   | 123456 | Usuario comum |
+| juliana  | 123456 | Usuario comum |
+| fernanda | 123456 | Usuario comum |
+
 ## Configuracao
 
 ### Permissoes
