@@ -47,6 +47,8 @@ Os seguintes usuarios foram criados para teste da aplicacao e autenticacao na AP
 | juliana  | 123456 | Usuario comum |
 | fernanda | 123456 | Usuario comum |
 
+Rota de Login: http://simple-vote.lndo.site/user/login
+
 ## Configuracao
 
 ### Permissoes
